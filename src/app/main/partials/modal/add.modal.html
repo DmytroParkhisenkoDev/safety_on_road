@@ -1,0 +1,69 @@
+<div class="add-modal">
+    <div class="modal-header">
+        <h3 class="modal-header-title">Add new marker?</h3>
+    </div>
+
+    <form name="addForm" ng-submit="vm.addAction(picFile)" class="form-horizontal" novalidate>
+        <div class="modal-body" id="modal-body">
+            <h4 class="modal-body-title">Fill the areas</h4>
+            <div class="form-group" ng-class="{ 'has-warning': addForm.description.$invalid }">
+                <label for="description" class="col-sm-2 control-label">Description:</label>
+                <div class="col-sm-10">
+                    <textarea  name="description" id="description" rows="3" class="form-control" ng-maxlength="150"
+                               ng-model="vm.marker.description" required>
+                    </textarea>
+                    <span ng-show="addForm.description.$error.required" class="help-block">
+                        Description field is required.
+                    </span>
+                    <span ng-show="addForm.description.$error.maxlength" class="help-block">
+                        Description is too long. Max length 150 characters.
+                    </span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lat" class="col-sm-2 control-label">Lat:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="lat" class="form-control" ng-model="vm.marker.lat" disabled>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lon" class="col-sm-2 control-label">Lon:</label>
+                <div class="col-sm-10">
+                    <input type="text" id="lon" class="form-control" ng-model="vm.marker.lon" disabled>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Image:</label>
+                <div class="col-sm-10">
+                    <img ng-show="myForm.file.$valid" ngf-thumbnail="picFile" class="thumb">
+                    <div class="modal-buttons-block">
+                        <label class="btn btn-primary btn-sm btn-file"> Browse
+                            <input type="file" ngf-select ng-model="picFile" name="file" accept="image/*" ngf-max-size="10MB"
+                                   ngf-model-invalid="errorFile" ngf-resize="{width: 150, height: 200}" style="display: none;">
+                        </label>
+
+                        <i ng-show="addForm.file.$error.maxSize">
+                            File too large: {{errorFile.size / 1000000|number:1}}Mb. Max size 10Mb.
+                        </i>
+                        <button type="button" ng-click="picFile = null" ng-show="picFile" class="btn btn-sm btn-warning">
+                            Remove
+                        </button>
+                        <span class="progress" ng-show="picFile.progress >= 0">
+                            <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'"></div>
+                        </span>
+                        <span ng-show="picFile.result">Upload Successful</span>
+                        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="submit" ng-disabled="addForm.$invalid">Add</button>
+            <button class="btn btn-warning" type="button" ng-click="vm.cancelAction()">Cancel</button>
+        </div>
+    </form>
+</div>

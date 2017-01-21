@@ -1,0 +1,181 @@
+// iclude fonts
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,200,300,500,700);
+
+// define variables
+@baseFontFamily: 'Open Sans', sans-serif;
+@additionalFontFamily: 'Raleway', sans-serif;
+@bgColor: #222;
+@mapBorder: 3px solid #777;
+
+// navbar
+.navbar-inverse {
+  border: none;
+  margin: 0;
+  .navbar-nav {
+    > li > a {
+      color: #777;
+      &:hover,
+      &:focus {
+        background-color: @bgColor;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: @bgColor;
+      }
+    }
+  }
+  .navbar-header {
+    text-transform: uppercase;
+    color: #3c8bc9;
+    font-weight: bolder;
+  }
+  .navbar-collapse {
+    @media screen and(max-width: 768px) {
+      background-color: #222;
+    }
+  }
+}
+
+// main content
+.map-container {
+  text-align: center;
+  .header-text-title {
+    font-size: 28px;
+    margin-top: 10px;
+    @media screen and(max-width: 768px) {
+      font-size: 22px;
+    }
+  }
+  .header-text {
+    .head-part-text {
+      margin-bottom: 10px;
+      font-size: 20px;
+      @media screen and(max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  h2 {
+    font-family: @baseFontFamily;
+  }
+  .map {
+    border-top: @mapBorder;
+    border-bottom: @mapBorder;
+  }
+  .buttons-control {
+    margin: 20px 0;
+    .buttons-control-right {
+      li {
+        display: inline;
+      }
+      @media screen and(max-width: 766px) {
+        padding: 0;
+        margin-top: 20px;
+      }
+    }
+  }
+  .angular-openlayers-map.ng-isolate-scope {
+    min-height: 700px;
+    width: 100%;
+    @media screen and(max-width: 500px) {
+      min-height: 450px;
+    }
+    @media screen and(max-width: 400px) {
+      min-height: 350px;
+    }
+  }
+}
+
+// footer
+.footer {
+  height: 50px;
+  background-color: @bgColor;
+  text-align: center;
+  color: white;
+  padding-top: 10px;
+  font-family: @baseFontFamily;
+}
+
+// modals
+.modal-header-title {
+  text-align: center;
+}
+
+.modal-body-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-buttons-block {
+  margin-top: 10px;
+}
+
+.left-modal-buttons {
+  text-align: left;
+}
+
+.popup-label {
+  background-color: #fff;
+  border: 2px #444 solid;
+  border-radius: 7px;
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    4px 4px 5px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         4px 4px 5px 0px rgba(50, 50, 50, 0.75);
+  color: #111;
+  font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 3px 6px;
+  position: absolute;
+  top: -35px;
+  left: 20px;
+  display: none;
+  word-wrap: break-word;
+  min-width: 150px;
+  max-width: 200px;
+}
+
+.popup-label img {
+  vertical-align: middle;
+}
+
+.popup-label.marker:before {
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  content: "";
+  border-right: 6px solid black;
+  border-right-color: inherit;
+  position: absolute;
+  left: -8px;
+  top: 5px;
+}
+
+.angular-openlayers-map:-moz-full-screen {
+  height: 100%;
+}
+.angular-openlayers-map:-webkit-full-screen {
+  height: 100%;
+}
+.angular-openlayers-map:full-screen {
+  height: 100%;
+}
+
+.angular-openlayers-map:not(-moz-full-screen) {
+  height: 400px;
+}
+
+.angular-openlayers-map:not(-webkit-full-screen) {
+  height: 400px;
+}
+
+.angular-openlayers-map:not(full-screen) {
+  height: 400px;
+}
+.ol-full-screen {
+  position: absolute;
+  top: 50%;
+}

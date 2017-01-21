@@ -1,0 +1,58 @@
+<div class="container">
+
+    <div>
+        <acme-navbar></acme-navbar>
+    </div>
+
+    <div class="map-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-text">
+                    <div class="header-text-title">Lorem ipsum dolor</div>
+                    <div class="head-part-text">
+                        Deserunt eveniet, ex minus praesentium recusandae similique.
+                    </div>
+                </div>
+                <div class="map">
+                    <openlayers ol-center="center" ol-defaults="defaults" ol-markers="markers" ol-layers="layers"
+                                custom-layers="true">
+                        <ol-control name="{{ control.name }}" ng-repeat="control in controls|filter: {active: true}"
+                                    ol-control-properties="control">
+                        </ol-control>
+                        <ol-layer name="{{ vm.layer.name }}" ol-layer-properties="bing">
+                            <ol-marker ng-repeat="marker in vm.markers" ng-click="vm.mapMarker = marker"
+                                       ol-marker-properties="marker" lat="marker.lat" lon="marker.lon">
+                            </ol-marker>
+                        </ol-layer>
+                    </openlayers>
+                </div>
+            </div>
+        </div>
+
+        <div class="buttons-control">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <button type="button" ng-click="vm.toggleMarker()" class="btn btn-primary">
+                        Show/hide markers
+                    </button>
+                    <button ng-click="center.autodiscover=true" class="btn btn-primary">Find me</button>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                    <ul class="buttons-control-right">
+                        <li ng-repeat="imagerySet in [ 'Road', 'AerialWithLabels', 'Aerial']">
+                            <button ng-click="bing.source.imagerySet=imagerySet" class="btn btn-info" ng-bind="imagerySet">
+                            </button>
+                        </li>
+                    </ulbuttons-control>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        Lorem ipsum dolor sit amet.
+    </div>
+
+</div>
+
+
